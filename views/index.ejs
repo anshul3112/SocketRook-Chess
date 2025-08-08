@@ -410,6 +410,65 @@ body {
   color: #00c3ff;
 }
 
+/* ===== Mobile-friendly fixes (paste at the end of your CSS) ===== */
+@media (max-width: 700px) {
+  /* Stop strict vertical centering on small screens and allow scrolling */
+  .container {
+    justify-content: flex-start;    /* start from top so inputs are reachable */
+    align-items: stretch;
+    padding: 20px 14px 110px;       /* extra bottom padding for on-screen keyboard */
+    min-height: 100vh;
+    height: auto;                   /* override the earlier height:100vh */
+    overflow-y: auto;               /* allow the page to scroll when keyboard opens */
+    box-sizing: border-box;
+    gap: 12px;
+  }
+
+  /* Stack the grid into a single column for narrow screens */
+  .grid-container {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Make inputs full-width and slightly larger for touch */
+  .form-input {
+    max-width: 100%;
+    width: 100%;
+    font-size: 18px;
+    margin-bottom: 12px;
+    padding: 12px;
+  }
+
+  /* Make room buttons more friendly on mobile */
+  .flex {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+  }
+  .flex .button {
+    flex: 1 1 48%;
+  }
+
+  /* Make chat input touch-friendly */
+  .chat-form input[type="text"] {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  /* When inputs receive focus, try to keep them visible */
+  input:focus, textarea:focus, select:focus {
+    scroll-margin-top: 100px; /* helps scrollIntoView center visible area */
+  }
+
+  /* Ensure body/html sizing doesn't force 100vh issues on some mobile browsers */
+  html, body {
+    height: auto;
+    min-height: 100%;
+  }
+}
+
 
     </style>
   </head>
